@@ -26,8 +26,8 @@ class Creation:
             pass
         n = '\n'
         file = open(resolved_path, '+a')
-        file.write('from Classes.Packets.PacketHandler import PacketHandler' + n)
-        file.write(f'class {resolved_name}(PacketHandler):' + n)
+        file.write('from Classes.Packets.PiranhaMessage import PiranhaMessage' + n)
+        file.write(f'class {resolved_name}(PiranhaMessage):' + n)
         file.write('    def __init__(self, messageData) -> None:' + n)
         file.write('        super().__init__(messageData)' + n)
         if self.is_server:
