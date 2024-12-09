@@ -26,13 +26,12 @@ class Creation:
             pass
         n = '\n'
         file = open(resolved_path, '+a')
-        file.write('from TypeAnnotations import Connection' + n)
         file.write('from Classes.Packets.PacketHandler import PacketHandler' + n)
         file.write(f'class {resolved_name}(PacketHandler):' + n)
         file.write('    def __init__(self, messageData) -> None:' + n)
         file.write('        super().__init__(messageData)' + n)
         if self.is_server:
-            file.write('    def encode(self, fields):' + n)
+            file.write('    def encode(self, fields, player):' + n)
             for i in range(lenght):
                 api = self.data[i]
                 file.write(f'        self.{api['ByteStream']}(!) #{api['NameField']}' + n)
@@ -40,7 +39,7 @@ class Creation:
             file.write('        fields = {}' + n)
             file.write('        return fields' + n)
         else:
-            file.write('    def encode(self, fields):' + n)
+            file.write('    def encode(self, fields, player):' + n)
             file.write('        pass' + n)
             file.write('    def decode(self):' + n)
             file.write('        fields = {}' + n)
@@ -48,7 +47,7 @@ class Creation:
                 api = self.data[i]
                 file.write(f"""        fields['{api['NameField']}'] = self.{api['ByteStream']}()""" + n)
             file.write('        return fields' + n)
-        file.writelines(['    def execute(self, conn: Connection, fields):' + n, '        pass' + n, '    def get_message_info(self):' + n, f'        return {self.class_number}' + n])
+        file.writelines(['    def execute(self, conn, fields):' + n, '        pass' + n, '    def get_message_info(self):' + n, f'        return {self.class_number}' + n])
         print(f'Created {resolved_name} on {resolved_path}')
     def run(self):
         self.template_insert_server()
