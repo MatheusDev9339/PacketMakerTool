@@ -3,7 +3,7 @@ A tool for projects of Brawl stars modding, BSDS like projs
 
 # The usage is pretty explicative, but here we go:
 first of all, download this library using:
-```batch
+```sh
 pip install InquirerPy
 ```
 second, put the absolute values on:
