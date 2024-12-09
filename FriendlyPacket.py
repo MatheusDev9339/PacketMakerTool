@@ -1,9 +1,9 @@
 from InquirerPy.validator import EmptyInputValidator
 from InquirerPy import prompt
-
+from Configs import configs
 class Creation:
-    directory_server = 'ABSOLUTE PATH TO PACKET/SERVER FOLDER, END WITH / PLS'
-    directory_client = 'ABSOLUTE PATH TO PACKET/CLIENT FOLDER, END WITH / PLS'
+    directory_server = configs['directory_server']
+    directory_client = configs['directory_client']
     all_processed = [
         'readBoolean', 'readBytes', 'readCompressedString', 'readLong', 'readString', 'readStringList', 'readVInt', 'readVIntList', 'writeBoolean', 
         'writeCompressedString', 'writeLong', 'writeString', 'writeStringList', 'writeVInt', 'writeVIntList']
